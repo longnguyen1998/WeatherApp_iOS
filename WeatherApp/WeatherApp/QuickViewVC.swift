@@ -1,0 +1,100 @@
+//
+//  ViewController.swift
+//  WeatherApp
+//
+//
+
+import UIKit
+import SwiftyJSON
+
+class QuickViewVC: UIViewController {
+    @IBOutlet weak var weatherCollectionView: UICollectionView!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
+    @IBOutlet weak var infoLAbel: UILabel!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var models = [ModeSearchCity]()
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "theme5")!)
+        self.searchBar.delegate = self
+        navigationItem.title = "WeatherApp"
+    }
+}
+
+extension QuickViewVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return models.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cityCell", for: indexPath) as! cityCell
+        let model = models[indexPath.row]
+        cell.bind(model: model)
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //push
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = sb.instantiateViewController(withIdentifier: "WeatherDetail") as? WeatherDetail{
+            vc.model = models[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+}
+
+extension QuickViewVC: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        getlocationKey(city: searchText)
+    }
+}
+
+extension QuickViewVC {
+    func getlocationKey(city : String?){
+        guard let city  = city else {
+            return
+        }
+        let session = URLSession.shared
+        guard let WeatherUrl = URL(string: "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=\(apiKey)&q=\(city)&language=en")
+            
+            //DDuYJkQdetuI8T3VanO1x2TjjGF1aR5O //http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=EtNkAeJqM8Or0JJiXCTb4GulGV4W9f1q&q=london&language=en
+            else {
+                return
+        }
+        
+        let dataTask = session.dataTask(with: WeatherUrl) { [weak self](data : Data?, response : URLResponse?, error : Error?) in
+            guard let self = self else {return}
+            if let error = error {
+                print("Error : \(error)")
+            } else {
+                print(JSON(data))
+                do {
+//                    let dataString = String(data: data!, encoding: String.Encoding.utf8)
+                    let decode = JSONDecoder()
+                    let models = try decode.decode([ModeSearchCity].self, from: data!)
+                    self.models = models
+                    DispatchQueue.main.async {
+                        self.weatherCollectionView.reloadData()
+//                        print(dataString)
+                    }
+                }catch{
+                    self.models.removeAll()
+                    DispatchQueue.main.async {
+                        self.weatherCollectionView.reloadData()
+                    }
+                    
+                    print("Error : \(error)")
+                }
+            }
+        }
+        dataTask.resume()
+    }
+
+}
