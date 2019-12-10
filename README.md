@@ -28,8 +28,12 @@ Swift and code in XCode
 
 <img src="https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/demoapp.jpeg" width="350" >
 
+
+<img src="https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/demoapp2.jpeg" width="350" >
+
 - Review the weather of the searched area :
 
+<img src="https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/demoapp1.jpeg" width="350" >
 
 #### Design and implementation
 
