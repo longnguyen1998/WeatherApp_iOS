@@ -1,8 +1,4 @@
-//
-//  cityCell.swift
-//  WeatherApp
-//
-//
+
 
 import UIKit
 
@@ -13,7 +9,6 @@ class cityCell: UICollectionViewCell
     
     
     func bind(model: ModeSearchCity) {
-        
         /// update cell
         cityName.text = model.localizedName
         lblCountry.text = model.country?.localizedName

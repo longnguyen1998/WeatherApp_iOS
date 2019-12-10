@@ -1,8 +1,4 @@
-//
-//  Extension.swift
-//  WeatherApp
-//
-//
+
 
 import Foundation
 

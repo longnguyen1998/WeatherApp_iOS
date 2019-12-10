@@ -16,7 +16,7 @@ class ModeSearchCity: Codable {
     let rank: Int?
     let localizedName: String?
     let country, administrativeArea: AdministrativeArea?
-
+    
     enum CodingKeys: String, CodingKey {
         case version = "Version"
         case key = "Key"
@@ -26,7 +26,7 @@ class ModeSearchCity: Codable {
         case country = "Country"
         case administrativeArea = "AdministrativeArea"
     }
-
+    
     init(version: Int?, key: String?, type: String?, rank: Int?, localizedName: String?, country: AdministrativeArea?, administrativeArea: AdministrativeArea?) {
         self.version = version
         self.key = key
@@ -41,12 +41,12 @@ class ModeSearchCity: Codable {
 // MARK: - AdministrativeArea
 class AdministrativeArea: Codable {
     let id, localizedName: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id = "ID"
         case localizedName = "LocalizedName"
     }
-
+    
     init(id: String?, localizedName: String?) {
         self.id = id
         self.localizedName = localizedName
