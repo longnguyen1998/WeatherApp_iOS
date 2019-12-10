@@ -26,6 +26,8 @@ Swift and code in XCode
 
 - Search weather : 
 
+![alt text] (https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/demoapp.jpeg)
+
 - Review the weather of the searched area :
 
 
