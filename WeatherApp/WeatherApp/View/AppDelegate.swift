@@ -6,15 +6,22 @@
 import UIKit
 
 //    let apiKey = "DDuYJkQdetuI8T3VanO1x2TjjGF1aR5O" // Accuweather API Key
-let apiKey = "wGqhKqOnFUu457hfxeANAMMGfdZjY9yo"  //EtNkAeJqM8Or0JJiXCTb4GulGV4W9f1q      FA26YLIvWfOaCBniO8YtkGpknT53hk8M      DDuYJkQdetuI8T3VanO1x2TjjGF1aR5O
+let apiKey = "DDuYJkQdetuI8T3VanO1x2TjjGF1aR5O"  //EtNkAeJqM8Or0JJiXCTb4GulGV4W9f1q      FA26YLIvWfOaCBniO8YtkGpknT53hk8M      DDuYJkQdetuI8T3VanO1x2TjjGF1aR5O      wGqhKqOnFUu457hfxeANAMMGfdZjY9yo
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var datas = [Data]()
+    
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if let datas = UserDefaults.standard.object(forKey: "data") as? [Data] {
+            self.datas = datas
+        }
+        
         return true
     }
 

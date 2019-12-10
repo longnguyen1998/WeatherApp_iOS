@@ -1,8 +1,3 @@
-//
-//  DetailTableView.swift
-//  WeatherApp
-//
-//
 
 import UIKit
 

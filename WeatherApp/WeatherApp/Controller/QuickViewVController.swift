@@ -7,21 +7,66 @@
 import UIKit
 import SwiftyJSON
 
+
+
 class QuickViewVC: UIViewController {
+    
+    enum ScreenMode {
+        case search
+        case history
+    }
+    
     @IBOutlet weak var weatherCollectionView: UICollectionView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var infoLAbel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     
     var models = [ModeSearchCity]()
-
+    
+    private var screenMode: ScreenMode = .search
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "theme5")!)
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        self.navigationController?.navigationBar.prefersLargeTitles = false
+//        self.navigationController?.navigationBar.isHidden = true
         self.searchBar.delegate = self
-        navigationItem.title = "WeatherApp"
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        switch  screenMode {
+        case .search:
+            navigationItem.title = "WeatherApp"
+            searchBar.isHidden = false
+            models.removeAll()
+            weatherCollectionView.reloadData()
+        case .history:
+            searchBar.isHidden = true
+            navigationItem.title = "History"
+            models = appDelegate.modeCitys
+            weatherCollectionView.reloadData()
+        }
+        
+    }
+    @IBAction func btnChangeScreen(_ sender: Any) {
+        changeScreenMode()
+    }
+    
+    func changeScreenMode () {
+        switch screenMode {
+        case .history:
+            self.screenMode = .search
+        case .search:
+            self.screenMode = .history
+        }
+        
+        viewWillAppear(true)
+    }
+    
+    
 }
 
 extension QuickViewVC: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -36,12 +81,21 @@ extension QuickViewVC: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.bind(model: model)
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //push
         let sb = UIStoryboard(name: "Main", bundle: nil)
         if let vc = sb.instantiateViewController(withIdentifier: "WeatherDetail") as? WeatherDetail{
             vc.model = models[indexPath.row]
+            
+            switch screenMode {
+            case .search:
+                // save data City
+                appDelegate.modeCitys.append(vc.model)
+                UserDefaults.standard.setLocations(appDelegate.modeCitys, forKey: "modeCitys")
+            default:
+                break
+            }
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -76,13 +130,13 @@ extension QuickViewVC {
             } else {
                 print(JSON(data))
                 do {
-//                    let dataString = String(data: data!, encoding: String.Encoding.utf8)
+                    //                    let dataString = String(data: data!, encoding: String.Encoding.utf8)
                     let decode = JSONDecoder()
                     let models = try decode.decode([ModeSearchCity].self, from: data!)
                     self.models = models
                     DispatchQueue.main.async {
                         self.weatherCollectionView.reloadData()
-//                        print(dataString)
+                        //                        print(dataString)
                     }
                 }catch{
                     self.models.removeAll()
@@ -96,5 +150,5 @@ extension QuickViewVC {
         }
         dataTask.resume()
     }
-
+    
 }
