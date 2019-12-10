@@ -29,11 +29,18 @@ class QuickViewVC: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        self.navigationController?.navigationBar.prefersLargeTitles = false
-//        self.navigationController?.navigationBar.isHidden = true
         self.searchBar.delegate = self
+//        self.navigationController?.navigationBar.prefersLargeTitles = false
+//        self.navigationController?.navigationBar.isHidden = true        
+//        view.isUserInteractionEnabled = true
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+//        view.addGestureRecognizer(tapGesture)
         
     }
+    
+//    @objc private func hideKeyboard() {
+//        searchBar.resignFirstResponder()
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
