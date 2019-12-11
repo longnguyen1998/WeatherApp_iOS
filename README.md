@@ -26,8 +26,14 @@ Swift and code in XCode
 
 - Search weather : 
 
+<img src="https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/demoapp.jpeg" width="350" >
+
+
+<img src="https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/demoapp2.jpeg" width="350" >
+
 - Review the weather of the searched area :
 
+<img src="https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/demoapp1.jpeg" width="350" >
 
 #### Design and implementation
 
@@ -36,7 +42,7 @@ Swift and code in XCode
 - You call City by : <https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/autocomplete>
 - When you has key Location of City , now you can call API weather by : <https://developer.accuweather.com/accuweather-forecast-api/apis>
 
-** Theme 
+** Background 
 - Support theme : <https://wallpaperaccess.com/safari>
 
 ** Knowledge Need to have 
@@ -51,5 +57,3 @@ Swift and code in XCode
 
 - Create complete product by Swift. 
 - Add some skill .
-- Create complete product by Swift some
-- Create complete product by Swift 
