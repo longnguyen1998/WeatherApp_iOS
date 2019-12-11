@@ -52,6 +52,12 @@ Swift and code in XCode
 ** Background 
 - Support theme : <https://wallpaperaccess.com/safari>
 
+
+##### Idea 
+
+<img src="https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/Full.png" >
+
+
 ** Knowledge Need to have 
 
 - Language : Swift (basic) 
