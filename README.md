@@ -6,12 +6,11 @@ It is an application that makes it easy for anyone to search and view the weathe
 
 ## Designer 
 
-Intern : Nguyễn Đình Thành Long 
-Company : VTi Corp @
+Nguyễn Đình Thành Long 
 
 ## Language
 
-Swift and code in XCode 
+Swift 
 
 ## How should I make it?
 
@@ -51,6 +50,12 @@ Swift and code in XCode
 
 ** Background 
 - Support theme : <https://wallpaperaccess.com/safari>
+
+
+##### Idea 
+
+<img src="https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/Full.png" >
+
 
 ** Knowledge Need to have 
 
