@@ -24,10 +24,17 @@ Swift and code in XCode
 
 #### Function 
 
-- Search weather : 
+- LauchScreen : 
+
+<img src="https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/demoapp3.png" width="350">
+
+ - MainScreen : 
 
 <img src="https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/demoapp.jpeg" width="350" >
 
+- Search weather :
+
+<img src="https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/demoapp4.png" width="350" >
 
 <img src="https://github.com/longnguyen1998/WeatherApp_iOS/blob/master/Photo/demoapp2.jpeg" width="350" >
 
