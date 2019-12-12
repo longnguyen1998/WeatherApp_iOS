@@ -30,17 +30,8 @@ class QuickViewVC: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.searchBar.delegate = self
-//        self.navigationController?.navigationBar.prefersLargeTitles = false
-//        self.navigationController?.navigationBar.isHidden = true        
-//        view.isUserInteractionEnabled = true
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-//        view.addGestureRecognizer(tapGesture)
         
     }
-    
-//    @objc private func hideKeyboard() {
-//        searchBar.resignFirstResponder()
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -124,8 +115,6 @@ extension QuickViewVC {
         }
         let session = URLSession.shared
         guard let WeatherUrl = URL(string: "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=\(apiKey)&q=\(city)&language=en")
-            
-            //DDuYJkQdetuI8T3VanO1x2TjjGF1aR5O //http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=EtNkAeJqM8Or0JJiXCTb4GulGV4W9f1q&q=london&language=en
             else {
                 return
         }
@@ -137,13 +126,11 @@ extension QuickViewVC {
             } else {
                 print(JSON(data))
                 do {
-                    //                    let dataString = String(data: data!, encoding: String.Encoding.utf8)
                     let decode = JSONDecoder()
                     let models = try decode.decode([ModeSearchCity].self, from: data!)
                     self.models = models
                     DispatchQueue.main.async {
                         self.weatherCollectionView.reloadData()
-                        //                        print(dataString)
                     }
                 }catch{
                     self.models.removeAll()
