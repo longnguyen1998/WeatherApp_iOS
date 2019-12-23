@@ -52,6 +52,7 @@ class AdministrativeArea: Codable {
         self.localizedName = localizedName
     }
 }
+
 extension ModeSearchCity {
     var saveCity: [String: String] {
         guard let key = key, let localizedName = localizedName else {
@@ -60,4 +61,7 @@ extension ModeSearchCity {
         return [key: localizedName]
     }
 }
+
+
+
 
