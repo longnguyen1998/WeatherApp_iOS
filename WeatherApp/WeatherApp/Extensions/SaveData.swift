@@ -12,9 +12,6 @@ import SwiftyJSON
 extension UserDefaults {
     func setLocations<T: Codable>(_ value: [T], forKey defaultName: String){
         let data = value.map { try? JSONEncoder().encode($0) }
-        for da in data {
-            print(JSON(da))
-        }
         set(data, forKey: defaultName)
     }
     

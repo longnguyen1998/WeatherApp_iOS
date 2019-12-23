@@ -194,38 +194,6 @@
             endingLineNumber = "39"
             landmarkName = "fetchWeatherDetails()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0EDDF77F-E219-4AD1-8E5A-4BA5E6E762DA - b622cc369ad441bb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in WeatherApp.WeatherDetail.fetchWeatherDetails() -&gt; ()"
-                  moduleName = "WeatherApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/thanhlong/Downloads/UISearchController/weatherApp/WeatherApp/WeatherApp/WeatherDetail.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "1424">
-               </Location>
-               <Location
-                  uuid = "0EDDF77F-E219-4AD1-8E5A-4BA5E6E762DA - 795615c6d6e89363"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in WeatherApp.WeatherDetail.fetchWeatherDetails() -&gt; ()"
-                  moduleName = "WeatherApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/thanhlong/Downloads/UISearchController/weatherApp/WeatherApp/WeatherApp/WeatherDetail.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "428">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
