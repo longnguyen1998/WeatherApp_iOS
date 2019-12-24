@@ -6,7 +6,7 @@
 import UIKit
 
 //    let apiKey = "DDuYJkQdetuI8T3VanO1x2TjjGF1aR5O" // Accuweather API Key
-let apiKey = "EtNkAeJqM8Or0JJiXCTb4GulGV4W9f1q"  //EtNkAeJqM8Or0JJiXCTb4GulGV4W9f1q      FA26YLIvWfOaCBniO8YtkGpknT53hk8M      DDuYJkQdetuI8T3VanO1x2TjjGF1aR5O      wGqhKqOnFUu457hfxeANAMMGfdZjY9yo
+let apiKey = "wGqhKqOnFUu457hfxeANAMMGfdZjY9yo"  //EtNkAeJqM8Or0JJiXCTb4GulGV4W9f1q      FA26YLIvWfOaCBniO8YtkGpknT53hk8M      DDuYJkQdetuI8T3VanO1x2TjjGF1aR5O      wGqhKqOnFUu457hfxeANAMMGfdZjY9yo
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 @UIApplicationMain

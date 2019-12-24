@@ -73,6 +73,7 @@ struct TemperatureValue: Codable
 enum Unit: String, Codable
 {
     case c = "C"
+    case f = "F"
 }
 
 struct Headline: Codable

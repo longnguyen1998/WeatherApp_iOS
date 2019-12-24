@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class HistoryTableViewController: UITableViewController {
-
+    
     var historys = appDelegate.modeCitys
     
     override func viewDidLoad() {
@@ -23,14 +23,15 @@ class HistoryTableViewController: UITableViewController {
         self.historys = appDelegate.modeCitys
         tableView.reloadData()
     }
-
+    
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return historys.count
@@ -39,6 +40,14 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryID") as! HistoryTableViewCell
         cell.bind(model: historys[indexPath.row])
+        //        cell.tapImage =  { [weak self] in
+        //            guard let self = self else {return}
+        //            let sb = UIStoryboard(name: "Main", bundle: nil)
+        //            let vc = sb.instantiateViewController(withIdentifier: "WeatherDetail") as! WeatherDetail
+        //            vc.model = self.historys[indexPath.row]
+        //            self.navigationController?.pushViewController(vc, animated: true)
+        //        }
+        
         return cell
     }
     
@@ -60,7 +69,7 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
+    
     private func deleteCity(modeSearchCity: ModeSearchCity) {
         if let index = appDelegate.modeCitys.firstIndex(where: { $0.key == modeSearchCity.key}) {
             appDelegate.modeCitys.remove(at: index)
@@ -68,5 +77,5 @@ class HistoryTableViewController: UITableViewController {
             UserDefaults.standard.setLocations(appDelegate.modeCitys, forKey: "modeCitys")
         }
     }
-
+    
 }

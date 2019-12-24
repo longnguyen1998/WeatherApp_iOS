@@ -12,17 +12,22 @@ class HistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var lblCity: UILabel!
     @IBOutlet weak var lblCountry: UILabel!
     
+    var tapImage: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    @IBAction func btnShow(_ sender: Any) {
+        //        tapImage?()
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
     
     func bind(model: ModeSearchCity) {
         /// update cell
@@ -30,5 +35,5 @@ class HistoryTableViewCell: UITableViewCell {
         lblCountry.text = model.country?.localizedName
         
     }
-
+    
 }

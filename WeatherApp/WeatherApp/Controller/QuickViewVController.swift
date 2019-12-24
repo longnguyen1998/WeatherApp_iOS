@@ -21,6 +21,7 @@ class QuickViewVC: UIViewController {
     @IBOutlet weak var infoLAbel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var background: UIImageView!
     var models = [ModeSearchCity]()
     
     private var screenMode: ScreenMode = .search
@@ -30,6 +31,7 @@ class QuickViewVC: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.searchBar.delegate = self
+        //        self.weatherCollectionView.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         
     }
     
@@ -49,6 +51,7 @@ class QuickViewVC: UIViewController {
         }
         
     }
+    
     @IBAction func btnChangeScreen(_ sender: Any) {
         changeScreenMode()
     }

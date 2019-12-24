@@ -14,7 +14,9 @@ class WeatherDetail: UIViewController
     @IBOutlet weak var maxDegree: UILabel!
     @IBOutlet weak var detailText: UILabel!
     @IBOutlet weak var detailTableView: UITableView!
+    @IBOutlet weak var swtCF: UISwitch!
     
+    @IBOutlet weak var lblMetric: UILabel!
     var dailyForecast: [DailyForecast] = []
     var today: Headline?
     var selectCity: [String:String] = [:]
@@ -27,10 +29,26 @@ class WeatherDetail: UIViewController
         fetchWeatherDetails()
     }
     
+    
+    var metric = true
+    
+    @IBAction func swtMetric(_ sender: Any) {
+        metric = swtCF.isOn
+        if swtCF.isOn == true {
+            lblMetric.text = "°C"
+            metric = true
+            fetchWeatherDetails()
+        }else{
+            lblMetric.text = "°F"
+            metric = false
+            fetchWeatherDetails()
+        }
+    }
+    
     func fetchWeatherDetails()
     {
         guard let model = model else {return}
-        if let urlStirng = URL(string: "https://dataservice.accuweather.com/forecasts/v1/daily/5day/\(model.key!)?apikey=\(apiKey)&language=en&metric=true")
+        if let urlStirng = URL(string: "https://dataservice.accuweather.com/forecasts/v1/daily/5day/\(model.key!)?apikey=\(apiKey)&language=en&metric=\(metric)")
         {
             let task = URLSession.shared.dataTask(with: urlStirng) { (data, response, error) in
                 if error != nil {
@@ -115,4 +133,16 @@ extension WeatherDetail: UITableViewDelegate, UITableViewDataSource
         else
         { detailText.text = "\(weather.epochDate!.weekDayName) \(weather.day.iconPhrase)" }
     }
+}
+
+extension Double {
+    
+    func asC() -> String {
+        return String(self) + "C"
+    }
+    
+    func asF() -> String {
+        return String((9/5)*(self) + 32 ) + "F"
+    }
+    
 }
