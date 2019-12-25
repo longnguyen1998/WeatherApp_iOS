@@ -27,6 +27,7 @@ class WeatherDetail: UIViewController
         super.viewDidLoad()        
         navigationItem.title = selectCity["city"]?.capitalizingFirstLetter
         fetchWeatherDetails()
+        self.showSpinner()
     }
     
     
@@ -38,10 +39,12 @@ class WeatherDetail: UIViewController
             lblMetric.text = "°C"
             metric = true
             fetchWeatherDetails()
+            self.showSpinner()
         }else{
             lblMetric.text = "°F"
             metric = false
             fetchWeatherDetails()
+            self.showSpinner()
         }
     }
     
@@ -51,6 +54,7 @@ class WeatherDetail: UIViewController
         if let urlStirng = URL(string: "https://dataservice.accuweather.com/forecasts/v1/daily/5day/\(model.key!)?apikey=\(apiKey)&language=en&metric=\(metric)")
         {
             let task = URLSession.shared.dataTask(with: urlStirng) { (data, response, error) in
+                self.removeSpinner()
                 if error != nil {
                     print(error!.localizedDescription)
                 } else {
@@ -71,6 +75,7 @@ class WeatherDetail: UIViewController
                             self.detailTableView.reloadData()
                         } catch {
                             print("Parse Error \(error)")
+                            self.Notification()
                         }
                     }
                 }
@@ -145,4 +150,15 @@ extension Double {
         return String((9/5)*(self) + 32 ) + "F"
     }
     
+}
+
+extension UIViewController{
+    func Notification(){
+        let alert = UIAlertController(title: "Error >.<", message: "Internet not connect", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
 }

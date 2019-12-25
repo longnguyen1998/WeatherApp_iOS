@@ -22,7 +22,13 @@ class QuickViewVC: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var background: UIImageView!
-    var models = [ModeSearchCity]()
+    var models = [ModeSearchCity]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.weatherCollectionView.isHidden = self.models.isEmpty
+            }
+        }
+    }
     
     private var screenMode: ScreenMode = .search
     
@@ -30,11 +36,13 @@ class QuickViewVC: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.white]
+        // keyboard
         self.searchBar.delegate = self
-        //        self.weatherCollectionView.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
-        
+        searchBar.tintColor = .red
+        self.background.isUserInteractionEnabled = true
+        self.background.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
     }
-    
+      
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         switch  screenMode {
@@ -49,7 +57,21 @@ class QuickViewVC: UIViewController {
             models = appDelegate.modeCitys
             weatherCollectionView.reloadData()
         }
-        
+    }
+    
+    @objc func hideKeyboard() {
+        self.searchBar.resignFirstResponder()
+    }
+    
+    // fix keyboard
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+        searchBar.tintColor = .red
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
     
     @IBAction func btnChangeScreen(_ sender: Any) {
@@ -62,12 +84,9 @@ class QuickViewVC: UIViewController {
             self.screenMode = .search
         case .search:
             self.screenMode = .history
-        }
-        
+        } 
         viewWillAppear(true)
     }
-    
-    
 }
 
 extension QuickViewVC: UICollectionViewDelegate, UICollectionViewDataSource {
