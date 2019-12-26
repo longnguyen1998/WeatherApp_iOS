@@ -16,6 +16,7 @@ class HistoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "HistoryCell", bundle: nil), forCellReuseIdentifier: "HistoryID")
+        tableView.backgroundView = UIImageView(image: UIImage(named: "bgroud")) //
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +48,7 @@ class HistoryTableViewController: UITableViewController {
         //            vc.model = self.historys[indexPath.row]
         //            self.navigationController?.pushViewController(vc, animated: true)
         //        }
-        
+        cell.backgroundColor = #colorLiteral(red: 0.3685682118, green: 0.5745404959, blue: 0.7894412875, alpha: 1)
         return cell
     }
     
